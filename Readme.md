@@ -9,7 +9,7 @@
 ## Setup 
 Clone Repository from github
 ```commandline
-git clone <>
+git clone git@github.com:vis7/ecommerce_project.git
 cd ecommerce_project
 ```
 
@@ -33,5 +33,7 @@ Create Superuser
 python manage.py createsuperuser
 ```
 
-
-
+# Run
+```
+python manage.py runserver
+```

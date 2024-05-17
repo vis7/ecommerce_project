@@ -43,7 +43,9 @@ def login(request):
             password = form.cleaned_data['password']
 
             user = CustomUser.objects.filter(email=email).first()
-            is_authorised = check_password(password, user.password)
+            if user:
+                is_authorised = check_password(password, user.password)
+            
             if user and is_authorised:
                 request.session['user_email'] = user.email
                 return redirect('ecommerce_app:index')
