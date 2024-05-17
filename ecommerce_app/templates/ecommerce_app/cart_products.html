@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Cart Products
+{% endblock %}
+
+{% block content %}
+    <form method="POST" action="{% url 'ecommerce_app:remove_products_from_cart' %}">
+        {% csrf_token %}
+
+            {% for product in cart_products %}
+                <input type="checkbox" name="selected_product_ids" value="{{product.id}}">{{ product.name }} - {{ product.price }} </input><br>
+            {% endfor %}
+
+        <input type="submit" value="Remove From Cart">
+    </form>
+{% endblock %}

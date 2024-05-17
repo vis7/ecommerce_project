@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        {% block title %}
+            Title
+        {% endblock %}
+    </title>
+</head>
+<body>
+
+<header>
+    <br>
+
+    {% if request.session.user_email %}
+        <a href="{% url 'accounts:logout' %}">Logout</a>
+        <a href="{% url 'ecommerce_app:view_cart_products' %}"> Cart Products</a>
+        <a href="{% url 'accounts:user_list' %}"> User List </a>
+
+
+    {% else %}
+        <a href="{% url 'accounts:login' %}">Login</a>
+        <a href="{% url 'accounts:registration' %}">Registration</a>
+    {% endif %}
+
+    <a href="{% url 'ecommerce_app:product_list' %}">Product List</a>
+    <br><br><hr>
+</header>
+
+{% block content %}
+<!--    Add content here which can be replace in extended template -->
+{% endblock %}
+
+</body>
+</html>

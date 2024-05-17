@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    User List
+{% endblock %}
+
+{% block content %}
+    Email - Is Active - Role <br>
+
+    <form method="POST" id="user_action_form" action="">
+        {% csrf_token %}
+            {% for user in users %}
+              <input type="checkbox" name="selected_user_ids" value="{{user.id}}"> {{user.email}} - {{user.is_active}} - {{user.role}} <br>
+            {% endfor %}
+        <input type="submit" name="activate_users">Activate Users</input>
+        <input type="submit" name="deactivate_users">Deactivate Users</input>
+        <input type="submit" name="promote_to_admin">Promote to Admin</input>
+    </form>
+
+{% endblock %}
